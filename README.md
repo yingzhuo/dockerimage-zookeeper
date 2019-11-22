@@ -8,7 +8,7 @@ version: "3.7"
 services:
   zookeeper:
     image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.4.14"
-    container_name: "kafka"
+    container_name: "zookeeper"
     restart: "always"
     ports:
     - "2181:2181"
