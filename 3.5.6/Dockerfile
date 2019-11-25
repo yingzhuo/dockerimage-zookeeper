@@ -20,7 +20,7 @@ RUN \
     find /opt/zookeeper -name "*.cmd" -delete && \
     find /opt/zookeeper -name "*.md" -delete && \
     apt-get update && \
-    apt-get install procps && \
+    apt-get install -y procps && \
     rm -rf /var/lib/apt/lists/*
 
 COPY ./config/zoo.cfg /opt/zookeeper/conf/zoo.cfg
