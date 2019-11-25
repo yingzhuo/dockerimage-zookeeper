@@ -18,7 +18,9 @@ RUN \
     rm -rf /opt/zookeeper/docs/ && \
     find /opt/zookeeper -name "*.txt" -delete && \
     find /opt/zookeeper -name "*.cmd" -delete && \
-    find /opt/zookeeper -name "*.md" -delete
+    find /opt/zookeeper -name "*.md" -delete && \
+    apt-get install -y ps && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY ./config/zoo.cfg /opt/zookeeper/conf/zoo.cfg
 
