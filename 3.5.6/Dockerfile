@@ -26,6 +26,7 @@ RUN \
 COPY ./config/zoo.cfg /opt/zookeeper/conf/zoo.cfg
 
 ENV \
+    JMXDISABLE=true \
     ZOOKEEPER_HOME=/opt/zookeeper \
     ZOOKEEPER_VERSION=${VERSION}
 
