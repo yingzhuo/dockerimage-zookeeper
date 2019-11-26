@@ -2,7 +2,7 @@ FROM registry.cn-shanghai.aliyuncs.com/yingzhuo/java:8-jre
 
 MAINTAINER 应卓 yingzhor@gmail.com
 
-COPY ./docker-entrypoint.sh /bin/docker-entrypoint.sh
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
 
 RUN \
     wget "https://archive.apache.org/dist/zookeeper/stable/apache-zookeeper-3.5.6-bin.tar.gz" -O /opt/zookeeper-3.5.6.tar.gz && \
@@ -27,4 +27,4 @@ EXPOSE 2181
 
 VOLUME /opt/zookeeper/data
 
-CMD ["bash", "docker-entrypoint.sh"]
+CMD ["bash", "/docker-entrypoint.sh"]
