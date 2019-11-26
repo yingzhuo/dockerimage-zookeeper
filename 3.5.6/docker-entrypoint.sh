@@ -2,11 +2,8 @@
 
 set -e
 
-mkdir -p /opt/zookeeper/data
-echo -n "${ZOOKEEPER_MYID}" > /opt/zookeeper/data/myid
-
-docktool --quiet filegen -t="/opt/zookeeper/conf/zoo.cfg.tmpl" --o="/opt/zookeeper/conf/zoo.cfg"
-
-bash /opt/zookeeper/bin/zkServer.sh start
-
-docktool sleep
+mkdir -p "${ZOOKEEPER_HOME}/data"
+echo -n "${ZOOKEEPER_MYID}" > "${ZOOKEEPER_HOME}/data/myid"
+docktool filegen -t="/opt/zoo.cfg.tmpl" -o="${ZOOKEEPER_HOME}/conf/zoo.cfg"
+bash "${ZOOKEEPER_HOME}/bin/zkServer.sh" start
+docktool --quiet sleep

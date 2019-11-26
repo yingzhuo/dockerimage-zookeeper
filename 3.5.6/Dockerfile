@@ -2,29 +2,32 @@ FROM registry.cn-shanghai.aliyuncs.com/yingzhuo/java:8-jre
 
 MAINTAINER 应卓 yingzhor@gmail.com
 
-COPY ./docker-entrypoint.sh /docker-entrypoint.sh
-
-RUN \
-    wget "https://archive.apache.org/dist/zookeeper/stable/apache-zookeeper-3.5.6-bin.tar.gz" -O /opt/zookeeper-3.5.6.tar.gz && \
-    tar -zxf /opt/zookeeper-3.5.6.tar.gz -C /opt && \
-    mv /opt/apache-zookeeper-3.5.6-bin/ /opt/zookeeper && \
-    rm -rf /opt/zookeeper-3.5.6.tar.gz && \
-    rm -rf /opt/zookeeper/conf/zoo_sample.cfg && \
-    rm -rf /opt/zookeeper/docs/ && \
-    find /opt/zookeeper -name "*.txt" -delete && \
-    find /opt/zookeeper -name "*.cmd" -delete && \
-    find /opt/zookeeper -name "*.md" -delete
-
-COPY ./config/zoo.cfg.tmpl /opt/zookeeper/conf/zoo.cfg.tmpl
-
 ENV \
     JMXDISABLE=true \
     ZOOKEEPER_HOME=/opt/zookeeper \
     ZOOKEEPER_VERSION=3.5.6 \
     ZOOKEEPER_MYID=1
 
-EXPOSE 2181 2888 3888
+ARG DOWNLOAD_LINK="https://archive.apache.org/dist/zookeeper/stable/apache-zookeeper-${ZOOKEEPER_VERSION}-bin.tar.gz"
+ARG TGZ="/opt/zookeeper-${ZOOKEEPER_VERSION}.tar.gz"
 
-VOLUME /opt/zookeeper/data
+COPY ./docker-entrypoint.sh /docker-entrypoint.sh
+
+RUN \
+    wget "${DOWNLOAD_LINK}" -O /opt/zookeeper-${ZOOKEEPER_VERSION}.tar.gz && \
+    tar -zxf /opt/zookeeper-${ZOOKEEPER_VERSION}.tar.gz -C /opt && \
+    mv /opt/apache-zookeeper-${ZOOKEEPER_VERSION}-bin/ ${ZOOKEEPER_HOME} && \
+    rm -rf ${TGZ} && \
+    rm -rf ${ZOOKEEPER_HOME}/conf/zoo_sample.cfg && \
+    rm -rf ${ZOOKEEPER_HOME}/docs/ && \
+    find ${ZOOKEEPER_HOME} -name "*.txt" -delete && \
+    find ${ZOOKEEPER_HOME} -name "*.cmd" -delete && \
+    find ${ZOOKEEPER_HOME} -name "*.md" -delete
+
+COPY ./config/zoo.cfg.tmpl /opt/zoo.cfg.tmpl
+
+EXPOSE 2181
+
+VOLUME ${ZOOKEEPER_HOME}/data
 
 CMD ["bash", "/docker-entrypoint.sh"]

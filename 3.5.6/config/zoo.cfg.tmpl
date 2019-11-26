@@ -32,6 +32,7 @@ clientPort=2181
 # Set to "0" to disable auto purge feature
 #autopurge.purgeInterval=1
 
-{{- range (toSlice "," (.ENV.ZOOKEEPER_SERVERS | default ""))}}
+# zookeeper cluster
+{{- range .ENV.ZOOKEEPER_SERVERS | default "" | toSlice "," }}
 {{.}}
 {{- end}}
