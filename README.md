@@ -1,6 +1,6 @@
 # dockerimage-zookeeper
 
-单节点`zookeeper`，请使用`docker-compose`启动之。
+### 单节点
 
 ```yaml
 version: "3.7"
@@ -14,4 +14,9 @@ services:
     - "2181:2181"
     volumes:
     - "${PWD}/data/:/opt/zookeeper/data/"
+```
+
+### 集群
+
+```yaml
 ```

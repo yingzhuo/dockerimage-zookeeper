@@ -15,7 +15,7 @@ RUN \
     find /opt/zookeeper -name "*.cmd" -delete && \
     find /opt/zookeeper -name "*.md" -delete
 
-COPY ./config/zoo.cfg /opt/zookeeper/conf/zoo.cfg
+COPY ./config/zoo.cfg.tmpl /opt/zookeeper/conf/zoo.cfg.tmpl
 
 ENV \
     JMXDISABLE=true \
@@ -23,7 +23,7 @@ ENV \
     ZOOKEEPER_VERSION=3.5.6 \
     ZOOKEEPER_MYID=1
 
-EXPOSE 2181
+EXPOSE 2181 2888 3888
 
 VOLUME /opt/zookeeper/data
 
