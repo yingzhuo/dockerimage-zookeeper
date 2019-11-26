@@ -20,7 +20,8 @@ COPY ./config/zoo.cfg /opt/zookeeper/conf/zoo.cfg
 ENV \
     JMXDISABLE=true \
     ZOOKEEPER_HOME=/opt/zookeeper \
-    ZOOKEEPER_VERSION=3.5.6
+    ZOOKEEPER_VERSION=3.5.6 \
+    ZOOKEEPER_MYID=1
 
 EXPOSE 2181
 
