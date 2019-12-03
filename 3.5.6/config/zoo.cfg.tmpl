@@ -33,6 +33,4 @@ clientPort=2181
 #autopurge.purgeInterval=1
 
 # zookeeper cluster
-{{- range .ENV.ZOOKEEPER_SERVERS | default "" | toSlice "," }}
-{{.}}
-{{- end}}
+{{.ENV.ZOOKEEPER_SERVERS | default "" | toSlice "," | join "\n"}}
