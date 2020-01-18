@@ -1,9 +1,8 @@
 FROM registry.cn-shanghai.aliyuncs.com/yingzhuo/java:8
 
-MAINTAINER 应卓 yingzhor@gmail.com
+LABEL maintainer="应卓 <yingzhor@gmail.com>"
 
-ENV \
-    JMXDISABLE=true \
+ENV JMXDISABLE=true \
     ZOOKEEPER_HOME=/opt/zookeeper \
     ZOOKEEPER_VERSION=3.5.6 \
     ZOOKEEPER_MYID=1
