@@ -29,4 +29,4 @@ EXPOSE 2181
 
 VOLUME ${ZOOKEEPER_HOME}/data
 
-CMD ["bash", "/bin/docker-entrypoint.sh"]
+ENTRYPOINT ["bash", "/bin/docker-entrypoint.sh"]
