@@ -9,7 +9,7 @@ version: "3.7"
 
 services:
   zookeeper:
-    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.6"
+    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.7"
     container_name: "zookeeper"
     restart: "always"
     ports:
@@ -25,7 +25,7 @@ version: "3.7"
 
 services:
   zookeeper1:
-    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.6"
+    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.7"
     container_name: "zookeeper1"
     restart: "always"
     hostname: "zookeeper1"
@@ -40,7 +40,7 @@ services:
     - "ZOOKEEPER_SERVERS=server.1=zookeeper1:2888:3888,server.2=zookeeper2:2888:3888,server.3=zookeeper3:2888:3888"
 
   zookeeper2:
-    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.6"
+    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.7"
     container_name: "zookeeper2"
     restart: "always"
     hostname: "zookeeper2"
@@ -55,7 +55,7 @@ services:
     - "ZOOKEEPER_SERVERS=server.1=zookeeper1:2888:3888,server.2=zookeeper2:2888:3888,server.3=zookeeper3:2888:3888"
 
   zookeeper3:
-    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.6"
+    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.7"
     container_name: "zookeeper3"
     restart: "always"
     hostname: "zookeeper3"
