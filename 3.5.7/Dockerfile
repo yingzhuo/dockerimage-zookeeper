@@ -4,7 +4,7 @@ LABEL maintainer="应卓 <yingzhor@gmail.com>"
 
 ENV JMXDISABLE=true \
     ZOOKEEPER_HOME=/opt/zookeeper \
-    ZOOKEEPER_VERSION=3.5.6 \
+    ZOOKEEPER_VERSION=3.5.7 \
     ZOOKEEPER_MYID=1
 
 ARG DOWNLOAD_LINK="https://archive.apache.org/dist/zookeeper/stable/apache-zookeeper-${ZOOKEEPER_VERSION}-bin.tar.gz"
