@@ -5,7 +5,7 @@
 ### 单节点
 
 ```yaml
-version: "3.7"
+version: "3.9"
 
 services:
   zookeeper:
@@ -21,7 +21,7 @@ services:
 ### 集群
 
 ```yaml
-version: "3.7"
+version: "3.9"
 
 services:
   zookeeper1:
