@@ -9,13 +9,13 @@ version: "3.9"
 
 services:
   zookeeper:
-    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.7"
+    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.8"
     container_name: "zookeeper"
     restart: "always"
     ports:
     - "2181:2181"
     volumes:
-    - "${PWD}/data/:/opt/zookeeper/data/"
+    - "${PWD}/data/:/data/"
 ```
 
 ### 集群
@@ -25,7 +25,7 @@ version: "3.9"
 
 services:
   zookeeper1:
-    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.7"
+    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.8"
     container_name: "zookeeper1"
     restart: "always"
     hostname: "zookeeper1"
@@ -34,13 +34,13 @@ services:
     ports:
     - "2181:2181"
     volumes:
-    - "${PWD}/data/zookeeper1/:/opt/zookeeper/data/"
+    - "${PWD}/data/zookeeper1/:/data/"
     environment:
     - "ZOOKEEPER_MYID=1"
     - "ZOOKEEPER_SERVERS=server.1=zookeeper1:2888:3888,server.2=zookeeper2:2888:3888,server.3=zookeeper3:2888:3888"
 
   zookeeper2:
-    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.7"
+    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.8"
     container_name: "zookeeper2"
     restart: "always"
     hostname: "zookeeper2"
@@ -49,13 +49,13 @@ services:
     ports:
     - "2182:2181"
     volumes:
-    - "${PWD}/data/zookeeper2/:/opt/zookeeper/data/"
+    - "${PWD}/data/zookeeper2/:/data/"
     environment:
     - "ZOOKEEPER_MYID=2"
     - "ZOOKEEPER_SERVERS=server.1=zookeeper1:2888:3888,server.2=zookeeper2:2888:3888,server.3=zookeeper3:2888:3888"
 
   zookeeper3:
-    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.7"
+    image: "registry.cn-shanghai.aliyuncs.com/yingzhuo/zookeeper:3.5.8"
     container_name: "zookeeper3"
     restart: "always"
     hostname: "zookeeper3"
@@ -64,7 +64,7 @@ services:
     ports:
     - "2183:2181"
     volumes:
-    - "${PWD}/data/zookeeper3/:/opt/zookeeper/data/"
+    - "${PWD}/data/zookeeper3/:/data/"
     environment:
     - "ZOOKEEPER_MYID=3"
     - "ZOOKEEPER_SERVERS=server.1=zookeeper1:2888:3888,server.2=zookeeper2:2888:3888,server.3=zookeeper3:2888:3888"
